@@ -56,31 +56,19 @@ and provide a clean and responsive interface for marketplace management.
   </div>
 
   <!-- Bootstrap -->
-  <div align="center">
-    <svg width="50" height="50" viewBox="0 0 128 128">
-      <path fill="#7952B3" d="M64 0C28.7 0 0 28.7 0 64s28.7 64 64 64 64-28.7 64-64S99.3 0 64 0z"/>
-      <text x="38" y="80" font-size="60" fill="white" font-family="Arial">B</text>
-    </svg>
+  
     <p><strong>Bootstrap</strong></p>
   </div>
 
   <!-- PHP -->
-  <div align="center">
-    <svg width="60" height="40" viewBox="0 0 256 128">
-      <ellipse cx="128" cy="64" rx="120" ry="50" fill="#777BB4"/>
-      <text x="70" y="75" font-size="40" fill="white" font-family="Arial">PHP</text>
-    </svg>
+  <br>
     <p><strong>PHP</strong></p>
-  </div>
+  
 
   <!-- SQL -->
-  <div align="center">
-    <svg width="50" height="50" viewBox="0 0 64 64">
-      <ellipse cx="32" cy="12" rx="24" ry="8" fill="#4479A1"/>
-      <path d="M8 12v30c0 4 11 8 24 8s24-4 24-8V12" fill="#4479A1"/>
-    </svg>
+  <br>
     <p><strong>SQL</strong></p>
-  </div>
+  <
 
 </div>
 
