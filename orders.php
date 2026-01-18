@@ -1,63 +1,151 @@
 <?php
 include('db.php');
 include('Sidebar.php');
-$stmt = $pdo->query("SELECT * FROM orders");
-$order = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+$stmt = $pdo->query("
+    SELECT id, user_id, product_id, total, status, quantity, created_at
+    FROM orders
+    ORDER BY created_at DESC
+");
+
+$orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Orders</title>
+
     <style>
         body {
-            display: flex;
-            justify-content: center;
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .content {
+            margin-left: 250px; /* sidebar width */
+            padding: 30px;
+        }
+
+        h3 {
+            color: #2a5bd7;
+            margin-bottom: 20px;
         }
 
         table {
-            margin-top: 100px;
+            width: 100%;
             border-collapse: collapse;
-
+            background: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
         }
 
-        th,
-        td {
-            border: 2px solid black;
-            padding: 8px;
+        thead {
+            background-color: #2a5bd7;
+            color: white;
+        }
+
+        th, td {
+            padding: 14px 16px;
+            text-align: center;
+        }
+
+        th {
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f4ff;
+        }
+
+        tr:hover {
+            background-color: #e6ebff;
+        }
+
+        .status {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: capitalize;
+        }
+
+        .status.pending {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .status.completed {
+            background-color: #d1e7dd;
+            color: #0f5132;
+        }
+
+        .status.cancelled {
+            background-color: #f8d7da;
+            color: #842029;
+        }
+
+        .total {
+            font-weight: bold;
+            color: #198754;
+        }
+
+        .date {
+            font-size: 13px;
+            color: #555;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                margin-left: 0;
+            }
+
+            table {
+                font-size: 13px;
+            }
         }
     </style>
 </head>
-
 <body>
-    <h3>orders list</h3>
-    <br><br>
 
-    <table border="2">
-        <tr>
-            <th>id</th>
-            <th>user</th>
-            <th>total</th>
-            <th>status</th>
-            <th>date</th>
-            <th>Action</th>
-        </tr>
-        <?php foreach($order as $o): ?>
-        <tr>
-            <td><?= $o['id'] ?></td>
-            <td><?= $o['user_id'] ?></td>
-            <td><?= $o['total'] ?></td>
-            <td><?= $o['status'] ?></td>
-            <td><?= $o['created_at']?></td>
-            <td>edit</td>
-        </tr>
+<div class="content">
+    <h3>Orders List</h3>
+
+    <table>
+        <thead>
+            <tr>
+                
+                <th>User_Id</th>
+                <th>Product_Id</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($orders as $o): ?>
+            <tr>
+                
+                <td><?= $o['user_id'] ?></td>
+                <td><?= $o['product_id'] ?></td>
+                <td class="total"><?= $o['total'] ?> MAD</td>
+                
+                <td>
+                    <span class="status <?= strtolower($o['status']) ?>">
+                        <?= $o['status'] ?>
+                    </span>
+                </td>
+                <td class="date"><?= $o['created_at'] ?></td>
+            </tr>
         <?php endforeach; ?>
+        </tbody>
     </table>
-</body>
+</div>
 
+</body>
 </html>
