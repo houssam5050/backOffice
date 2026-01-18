@@ -1,5 +1,6 @@
 <?php
 include('db.php');
+include('Sidebar.php');
 
 $using = $pdo->query("SELECT * FROM users ORDER BY id DESC");
 $users = $using->fetchAll(PDO::FETCH_ASSOC);
@@ -91,7 +92,7 @@ $users = $using->fetchAll(PDO::FETCH_ASSOC);
 
         <h2>Users List</h2>
 
-        <a class="back-btn" href="products.php">🏠 Home</a>
+       
 
         <table border="4">
             <tr>
