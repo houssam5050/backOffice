@@ -1,93 +1,44 @@
-<!-- ===================== -->
-<!-- Dashboard Management System -->
-<!-- ===================== -->
-
-<h1 align="center">📊 Marketplace Dashboard Management System</h1>
-
-<p align="center">
-  A <strong>Back-Office Management System</strong> for a marketplace platform,  
-  designed to manage <strong>products, users, and teams</strong> efficiently.
-</p>
+<h1 align="center">Marketplace Dashboard Management System</h1>
 
 <hr>
 
-<!-- Description -->
-
+<h2>Description</h2>
 <p>
-This project is a <strong>Dashboard Management System</strong> built for the 
+This project is a <strong>Dashboard Management System</strong> designed for the 
 <strong>front office of a marketplace</strong>.  
-It provides tools to manage:
+It allows administrators to efficiently manage marketplace data through a 
+simple, responsive, and user-friendly interface.
 </p>
-
-<ul>
-  <li>📦 Products</li>
-  <li>👤 Users</li>
-  <li>👥 Team members</li>
-</ul>
 
 <p>
-The goal of this system is to simplify administration tasks, improve workflow,
-and provide a clean and responsive interface for marketplace management.
+The system focuses on improving workflow, organization, and control over 
+products, users, and team members.
 </p>
 
 <hr>
 
-<!-- Technologies -->
-<h2>🛠️ Technologies Used</h2>
-
-<div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: center;">
-
-  <!-- HTML -->
-  <div align="center">
-    <svg width="50" height="50" viewBox="0 0 128 128">
-      <path fill="#E44D26" d="M19 3l9 101 36 10 36-10 9-101z"/>
-      <path fill="#F16529" d="M64 112l29-8 8-90H64z"/>
-    </svg>
-    <p><strong>HTML5</strong></p>
-  </div>
-
-  <!-- CSS -->
-  <div align="center">
-    <svg width="50" height="50" viewBox="0 0 128 128">
-      <path fill="#1572B6" d="M19 3l9 101 36 10 36-10 9-101z"/>
-      <path fill="#33A9DC" d="M64 112l29-8 8-90H64z"/>
-    </svg>
-    <p><strong>CSS3</strong></p>
-  </div>
-
-  <!-- Bootstrap -->
-  
-    <p><strong>Bootstrap</strong></p>
-  </div>
-
-  <!-- PHP -->
-  <br>
-    <p><strong>PHP</strong></p>
-  
-
-  <!-- SQL -->
-  <br>
-    <p><strong>SQL</strong></p>
-  <
-
-</div>
-
-<hr>
-
-<!-- Features -->
-<h2>✨ Features</h2>
+<h2>Features</h2>
 <ul>
-  <li>Responsive dashboard UI</li>
-  <li>Product management (CRUD)</li>
+  <li>Product management (Add, Edit, Delete)</li>
   <li>User management</li>
   <li>Team management</li>
-  <li>Secure database interaction</li>
+  <li>Responsive dashboard interface</li>
+  <li>Secure data handling</li>
 </ul>
 
 <hr>
 
-<!-- Footer -->
-<p align="center">
-  🚀 This repository contains the front-office management system I developed and pushed to GitHub.
-</p>
+<h2>Technologies Used</h2>
+<ul>
+  <li><strong>HTML5</strong> – Structure and layout</li>
+  <li><strong>CSS3</strong> – Styling and design</li>
+  <li><strong>Bootstrap</strong> – Responsive UI components</li>
+  <li><strong>PHP</strong> – Backend logic</li>
+  <li><strong>SQL</strong> – Database management</li>
+</ul>
 
+<hr>
+
+<p align="center">
+  This repository contains the front-office management system for a marketplace that I developed and pushed to GitHub.
+</p>
