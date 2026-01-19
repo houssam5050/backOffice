@@ -2,14 +2,34 @@
 include('db.php');
 include('Sidebar.php');
 
+if (isset($_POST['delete_id'])) {
+    $id = (int) $_POST['delete_id'];
+
+    $stmt = $pdo->prepare("DELETE FROM orders WHERE id = ?");
+    $stmt->execute([$id]);
+
+    header("Location: orders.php");
+    exit;
+}
+
+if (isset($_POST['confirm_id'])) {
+    $id = (int) $_POST['confirm_id'];
+
+    $stmt = $pdo->prepare("UPDATE orders SET status = 'confirmed' WHERE id = ?");
+    $stmt->execute([$id]);
+
+    header("Location: orders.php");
+    exit;
+}
+
 $stmt = $pdo->query("
     SELECT id, user_id, product_id, total, status, quantity, created_at
     FROM orders
     ORDER BY created_at DESC
 ");
-
 $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,12 +46,12 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
         .content {
-            margin-left: 250px; /* sidebar width */
+            margin-left: 250px;
             padding: 30px;
         }
 
         h3 {
-            color: #2a5bd7;
+            color: #000000;
             margin-bottom: 20px;
         }
 
@@ -45,8 +65,8 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
         thead {
-            background-color: #2a5bd7;
-            color: white;
+            background-color: #1b1b2f;
+            color: #ffb400;
         }
 
         th, td {
@@ -125,6 +145,7 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <th>Total</th>
                 <th>Status</th>
                 <th>Date</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -141,6 +162,26 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     </span>
                 </td>
                 <td class="date"><?= $o['created_at'] ?></td>
+
+                <td>
+    <!-- CONFIRM -->
+    <form method="POST" style="display:inline;">
+        <input type="hidden" name="confirm_id" value="<?= $o['id'] ?>">
+        <button type="submit" class="btn-confirm">
+            ✔ Confirm
+        </button>
+    </form>
+
+    <!-- DELETE -->
+    <form method="POST" style="display:inline;"
+          onsubmit="return confirm('Delete this order?')">
+        <input type="hidden" name="delete_id" value="<?= $o['id'] ?>">
+        <button type="submit" class="btn-delete">
+            ❌ Delete
+        </button>
+    </form>
+</td>
+
             </tr>
         <?php endforeach; ?>
         </tbody>

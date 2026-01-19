@@ -65,7 +65,7 @@ if (isset($_SESSION["account"])) {
             </label>
             <input type="email" name="email" class="form-control" placeholder="Email address" required>
             <small class="demo-text">
-                Demo: <strong>visitor@trial.com</strong>
+                Demo: <strong>email@hh.com</strong>
             </small>
         </div>
 
@@ -76,7 +76,7 @@ if (isset($_SESSION["account"])) {
             </label>
             <input type="password" name="password" class="form-control" placeholder="Password" required>
             <small class="demo-text">
-                Demo password: <strong>visitor</strong>
+                Demo password: <strong>email@hh.com</strong>
             </small>
         </div>
 

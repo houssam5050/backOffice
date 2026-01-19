@@ -63,8 +63,8 @@ $users = $using->fetchAll(PDO::FETCH_ASSOC);
         }
 
         th {
-            background: #3949ab;
-            color: #fff;
+            background-color: #1b1b2f;
+            color: #ffb400;
             padding: 14px;
             font-size: 16px;
         }

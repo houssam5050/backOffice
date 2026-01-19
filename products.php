@@ -133,8 +133,8 @@ $pending_shipments = 15;
         }
 
         th {
-            background-color: #0d47a1;
-            color: #fff;
+            background-color: #1b1b2f;
+            color: #ffb400;
         }
 
         tr:hover {
