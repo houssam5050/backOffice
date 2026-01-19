@@ -81,6 +81,15 @@
         .back a:hover {
             text-decoration: underline;
         }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 18px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 15px;
+        }
     </style>
 </head>
 
@@ -97,7 +106,12 @@
             <input type="text" name="lname" required>
 
             <label>Job</label>
-            <input type="text" name="job" required>
+            <select id="items" name="items">
+                <option value="">-- Select an job --</option>
+                <option value="item1">Admin</option>
+                <option value="item2">Manager</option>
+                <option value="item3">Delevery</option>
+            </select>
 
             <button type="submit">Save Member</button>
         </form>
