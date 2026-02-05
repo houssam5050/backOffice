@@ -90,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 ?>
 
 <div class="card">
-    <div class="success">✅ Member Added Successfully!</div>
+    <div class="success"> Member Added Successfully!</div>
     <p>What would you like to do next?</p>
 
     <div class="buttons">

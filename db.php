@@ -1,7 +1,9 @@
 <?php
 
 $host = "localhost";
-
+// $dbname = " u900885204_hamdan_db";
+// $username = " u900885204_hamdan";
+// $password = ' ^82^3MV;s$Vv';
 
 $dbname = 'office';
 $username = 'root';
