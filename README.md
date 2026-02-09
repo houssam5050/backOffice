@@ -1,6 +1,8 @@
 <h1 align="center">Marketplace Dashboard Management System</h1>
 <br>
 <a href="https://ibb.co/hFgRpSzB"><img src="https://i.ibb.co/4RFZBHr8/Capture-d-cran-2026-02-04-180753.png" alt="Capture-d-cran-2026-02-04-180753" border="0"></a>
+<br>
+<a href="https://ibb.co/NdKR0yWy"><img src="https://i.ibb.co/39cKxCSC/dashboard2.png" alt="dashboard2" border="0"></a>
 
 <hr>
 
