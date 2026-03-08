@@ -1,5 +1,5 @@
 <?php
-require "db.php";
+include "db.php";
 $stm = $pdo->prepare("SELECT * FROM login WHERE email=:email AND password=:password");
 $stm->bindParam(":email", $_POST["email"]);
 $stm->bindParam(":password", $_POST["password"]);

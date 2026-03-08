@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once "db.php";
+include "db.php";
 
 if (isset($_SESSION["login"])) {
     header("location: products.php");
