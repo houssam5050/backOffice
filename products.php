@@ -1,16 +1,16 @@
 <?php
+session_start();
+if (!isset($_SESSION["login"])) {
+    header("location: ../index.php");
+    exit;
+}
 include('db.php');
 include('Sidebar.php');
 
 $stmt = $pdo->query("SELECT * FROM products ORDER BY id DESC");
 $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$total_earnings = "30955$";
-$sales_growth = "+55%";
-$total_products = count($products);
-$total_users = "Houssam Hamdan";
-$new_orders = 24;
-$pending_shipments = 15;
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +28,7 @@ $pending_shipments = 15;
             background-color: #f2f4f8;
         }
 
-        /* Sidebar */
+
         .sidebar {
             position: fixed;
             left: 0;
@@ -185,11 +185,11 @@ $pending_shipments = 15;
         /* MOBILE FIXES */
         @media (max-width: 768px) {
             .sidebar {
-                left: -220px; /* hidden by default */
+                left: -220px;
             }
 
             .sidebar.show {
-                left: 0; /* show when toggled */
+                left: 0;
             }
 
             .content {
@@ -210,7 +210,6 @@ $pending_shipments = 15;
                 justify-content: center;
             }
 
-            /* Hamburger menu button */
             .mobile-menu {
                 position: fixed;
                 top: 15px;
@@ -229,10 +228,10 @@ $pending_shipments = 15;
 
 <body>
 
- 
+
 
     <div class="content">
-     
+
 
         <h2>🛍 Recent Products</h2>
         <a href="add_product.php" class="button">
@@ -259,7 +258,7 @@ $pending_shipments = 15;
                         <td class="actions">
                             <a href="edit_products.php?id=<?= $product['id'] ?>" class="edit">Edit</a>
                             <a href="delete_product.php?id=<?= $product['id'] ?>" class="delete"
-                               onclick="return confirm('Are you sure?')">Delete</a>
+                                onclick="return confirm('Are you sure?')">Delete</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -275,4 +274,5 @@ $pending_shipments = 15;
     </script>
 
 </body>
+
 </html>

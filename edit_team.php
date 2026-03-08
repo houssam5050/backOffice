@@ -10,20 +10,20 @@ $id = $_GET['id'];
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
-    $fname = $_POST['fname'];
-    $lname = $_POST['lname'];
-    $job   = $_POST['job'];
+    $email = $_POST['email'];
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $job = $_POST['job'];
 
     $sql = "UPDATE team 
-            SET fname = :fname, lname = :lname, job = :job
+            SET email = :email, password = :password, job = :job
             WHERE id = :id";
 
     $stmt = $pdo->prepare($sql);
     $stmt->execute([
-        ':fname' => $fname,
-        ':lname' => $lname,
-        ':job'   => $job,
-        ':id'    => $id
+        ':email' => $email,
+        ':password' => $password,
+        ':job' => $job,
+        ':id' => $id
     ]);
 
     header("Location: team.php");
@@ -42,6 +42,7 @@ if (!$member) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Edit Member</title>
@@ -63,7 +64,7 @@ if (!$member) {
             border-radius: 12px;
             width: 100%;
             max-width: 400px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
 
         h3 {
@@ -96,7 +97,7 @@ if (!$member) {
         button {
             width: 100%;
             padding: 12px;
-            background-color: #4f46e5;
+            background-color: #22c55e;
             color: white;
             border: none;
             border-radius: 6px;
@@ -122,31 +123,46 @@ if (!$member) {
         .back a:hover {
             text-decoration: underline;
         }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 18px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 15px;
+        }
     </style>
 </head>
 
 <body>
 
-<div class="card">
-    <h3>Edit Member</h3>
+    <div class="card">
+        <h3>Edit Member</h3>
 
-    <form method="post">
-        <label>First Name</label>
-        <input type="text" name="fname" value="<?= htmlspecialchars($member['fname']) ?>" required>
+        <form method="post">
+            <label>email</label>
+            <input type="email" name="email" value="<?= htmlspecialchars($member['email']) ?>" required>
 
-        <label>Last Name</label>
-        <input type="text" name="lname" value="<?= htmlspecialchars($member['lname']) ?>" required>
+            <label>password</label>
+            <input type="password" name="password" placeholder="Leave blank to keep current password">
+            <label>Role</label>
+            <select name="job" required>
+                <option value="">-- Select a role --</option>
+                <option value="Admin" <?= $member['job'] == 'Admin' ? 'selected' : '' ?>>Admin</option>
+                <option value="Manager" <?= $member['job'] == 'Manager' ? 'selected' : '' ?>>Manager</option>
+                <option value="Delivery" <?= $member['job'] == 'Delivery' ? 'selected' : '' ?>>Delivery</option>
+                <option value="Visitor" <?= $member['job'] == 'Delivery' ? 'selected' : '' ?>>Visitor</option>
+            </select>
 
-        <label>Job</label>
-        <input type="text" name="job" value="<?= htmlspecialchars($member['job']) ?>" required>
+            <button type="submit">Update Member</button>
+        </form>
 
-        <button type="submit">Update Member</button>
-    </form>
-
-    <div class="back">
-        <a href="team.php">← Back to list</a>
+        <div class="back">
+            <a href="team.php">← Back to list</a>
+        </div>
     </div>
-</div>
 
 </body>
+
 </html>

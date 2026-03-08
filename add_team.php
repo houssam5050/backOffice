@@ -99,18 +99,20 @@
         <h3>Add New Member</h3>
 
         <form action="insert_team.php" method="post">
-            <label>First Name</label>
-            <input type="text" name="fname" required>
+            <label>email</label>
+            <input type="text" name="email" required>
 
-            <label>Last Name</label>
-            <input type="text" name="lname" required>
+            <label>password</label>
+            <input type="text" name="password" required>
 
-            <label>Job</label>
-            <select id="items" name="items">
-                <option value="">-- Select an job --</option>
-                <option value="item1">Admin</option>
-                <option value="item2">Manager</option>
-                <option value="item3">Delevery</option>
+            <label>role</label>
+            <select name="job">
+                <option value="">-- Select a role --</option>
+                <option value="Admin">Admin</option>
+                <option value="Manager">Manager</option>
+                <option value="Delivery">Delivery</option>
+                <option value="Visitor">Visitor</option>
+
             </select>
 
             <button type="submit">Save Member</button>

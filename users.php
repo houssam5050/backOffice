@@ -4,6 +4,16 @@ include('Sidebar.php');
 
 $using = $pdo->query("SELECT * FROM users ORDER BY id DESC");
 $users = $using->fetchAll(PDO::FETCH_ASSOC);
+
+if (isset($_GET['delete'])) {
+    $id = $_GET['delete'];
+
+    $stmt = $pdo->prepare("DELETE FROM users WHERE id = ?");
+    $stmt->execute([$id]);
+
+    header("Location: users.php");
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -72,7 +82,7 @@ $users = $using->fetchAll(PDO::FETCH_ASSOC);
         td {
             padding: 15px;
             border-bottom: 1px solid #ddd;
-            font-size: 25px;
+            font-size: 13px;
             color: #333;
         }
 
@@ -83,6 +93,20 @@ $users = $using->fetchAll(PDO::FETCH_ASSOC);
         tr:hover {
             background: #eeeeee;
         }
+
+        .delete-btn {
+            padding: 6px 12px;
+            background: #dc3545;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .delete-btn:hover {
+            background: #a71d2a;
+        }
     </style>
 </head>
 
@@ -92,18 +116,25 @@ $users = $using->fetchAll(PDO::FETCH_ASSOC);
 
         <h2>Users List</h2>
 
-       
+
 
         <table border="4">
             <tr>
                 <th>Name</th>
                 <th>Email</th>
+                <th>Action</th>
             </tr>
 
             <?php foreach ($users as $u): ?>
                 <tr>
                     <td><?= htmlspecialchars($u['username']) ?></td>
                     <td><?= htmlspecialchars($u['email']) ?></td>
+                    <td>
+                        <a href="?delete=<?= $u['id'] ?>"
+                            onclick="return confirm('Are you sure you want to delete this user?')" class="delete-btn">
+                            Delete
+                        </a>
+                    </td>
                 </tr>
             <?php endforeach; ?>
         </table>

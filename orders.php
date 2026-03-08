@@ -164,7 +164,6 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <td class="date"><?= $o['created_at'] ?></td>
 
                 <td>
-    <!-- CONFIRM -->
     <form method="POST" style="display:inline;">
         <input type="hidden" name="confirm_id" value="<?= $o['id'] ?>">
         <button type="submit" class="btn-confirm">
@@ -172,7 +171,6 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </button>
     </form>
 
-    <!-- DELETE -->
     <form method="POST" style="display:inline;"
           onsubmit="return confirm('Delete this order?')">
         <input type="hidden" name="delete_id" value="<?= $o['id'] ?>">

@@ -100,6 +100,15 @@ if (isset($_POST['update'])) {
             color: #007bff;
             text-decoration: none;
         }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 18px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 15px;
+        }
     </style>
 
 </head>
@@ -118,8 +127,14 @@ if (isset($_POST['update'])) {
             <input type="number" name="price" value="<?= htmlspecialchars($product['price']) ?>">
 
             <label>Category:</label>
-            <input type="text" name="category" value="<?= htmlspecialchars($product['category']) ?>">
-
+            <select id="category" name="category" required>
+                <option value="">-- Select a category --</option>
+                <option value="house">House</option>
+                <option value="electronic">Electronic</option>
+                <option value="sport">Sport</option>
+                <option value="clothes">Clothes</option>
+            </select>
+            <br>
             <label>Current Image:</label><br>
             <img src="uploads/<?= $product['image'] ?>" width="120px" style="border-radius:8px;"><br><br>
 

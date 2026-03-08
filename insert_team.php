@@ -75,22 +75,22 @@ include('db.php');
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
-    $fname = $_POST['fname'];
-    $lname = $_POST['lname'];
+    $email= $_POST['email'];
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $job   = $_POST['job'];
 
-    $sql = "INSERT INTO team (fname, lname, job) VALUES (:fname, :lname, :job)";
+    $sql = "INSERT INTO team (email, password, job) VALUES (:email, :password, :job)";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([
-        ':fname' => $fname,
-        ':lname' => $lname,
+        ':email' => $email,
+        ':password' => $password,
         ':job'   => $job
     ]);
 }
 ?>
 
 <div class="card">
-    <div class="success"> Member Added Successfully!</div>
+    <div class="success">✅ Member Added Successfully!</div>
     <p>What would you like to do next?</p>
 
     <div class="buttons">
