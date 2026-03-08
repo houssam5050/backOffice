@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "db.php";
+require_once "db.php";
 
 if (isset($_SESSION["login"])) {
     header("location: products.php");
@@ -14,19 +14,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST["email"]);
     $password = trim($_POST["password"]);
 
-    
-    $stmt = $pdo->prepare("SELECT * FROM admin_users WHERE email = :email");
+
+    $stmt = $pdo->prepare("SELECT id, email, password, job FROM admin_users WHERE email = :email");
     $stmt->execute([':email' => $email]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
- 
+
     if (!$user) {
         $stmt = $pdo->prepare("SELECT id, email, password, job AS role FROM team WHERE email = :email");
         $stmt->execute([':email' => $email]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-   
+
     if ($user && password_verify($password, $user["password"])) {
 
         $_SESSION["login"] = true;
@@ -107,7 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </label>
                 <input type="email" name="email" class="form-control" placeholder="Email address" required>
                 <small class="demo-text">
-                   
+
                 </small>
             </div>
 
